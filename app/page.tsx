@@ -6,7 +6,9 @@ import { Separator } from "@/components/ui/separator"
 import { Star } from "lucide-react"
 import { Footer } from "@/components/footer"
 
-export   const products = [
+export default function MideaPage() {
+
+  const products = [
     {
       id: 1,
       name: "Lava e Seca 10,5kg Midea Storm Wash Inverter Conectada",
@@ -129,8 +131,6 @@ export   const products = [
     },
   ]
   
-export default function MideaPage() {
-
 
   const categories = [
     { name: "Ar-condicionado", icon: "❄️" },
