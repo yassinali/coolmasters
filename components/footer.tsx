@@ -46,8 +46,8 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Atendimento Oficial</h4>
             <div className="space-y-2 text-sm text-gray-600">
-              <div>📞 258 82 333 3369</div>
-              <div>📧 geral@coolmasters.com</div>
+              <div>< a href="tel: 258 82 333 3369">📞 258 82 333 3369</a></div>
+              <div><a href="mailto:geral@coolmasters.com<">📧 geral@coolmasters.com</a></div>
             </div>
           </div>
           <div>
