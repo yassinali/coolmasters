@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import { Button } from "@/components/ui/button"
+
 import { Footer } from "@/components/footer"
 import { CarouselPage } from "./(main)/_components/carousel"
 import { MenuDestaque } from "./(main)/_components/menu-destaque"
@@ -7,6 +6,7 @@ import Image from "next/image"
 import { ComoPodemosAjudar } from "./(main)/_components/como-podemos-ajudar"
 import { MideaProducts } from "./(main)/_components/mais-vendidos"
 import { Promocao } from "./(main)/_components/promocao"
+import { Descontos } from "./(main)/_components/descontos"
 
 export default function MideaPage() {
   return (
@@ -14,13 +14,14 @@ export default function MideaPage() {
    
 
       <div className="container mx-auto">
-        {/* Header Banner */}
 
         <div className="flex justify-center items-center mt-10 mb-10">
           <CarouselPage />
         </div>
 
-        <div className="flex flex-col justify-center items-center mb-10 bg-blue-600 text-white p-20">banner</div>
+        <div className="flex flex-col justify-center items-center mb-10 bg-white text-black p-20">
+          <Descontos/>
+        </div>
 
         <div>
           <MenuDestaque />
@@ -42,27 +43,14 @@ export default function MideaPage() {
 
         <Promocao/>
 
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex gap-6">
-            {/* Sidebar Filters */}
-            {/* Main Content */}
-            <div className="flex-1">
-              {/* Products Grid */}
-              <div className="text-center">
-                <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent">
-                  Ver mais produtos
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
         {/* About Section */}
         <div className="mt-16 text-center bg-gray-100 p-8">
-          <h2 className="text-2xl font-bold mb-4">
+          <h2 className="text-3xl font-bold mb-4">
             Eletrodomésticos Midea: lava e seca, Geleira, frigobar, lava loiças e mais!
           </h2>
-          <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed text-2xl">
             A Midea se destaca no mercado de eletrodomésticos fornecendo a você design inovador. Nossos eletrodomésticos
             possuem tecnologia de ponta com design moderno. Os produtos são eficientes, duráveis e energeticamente
             econômicos, oferecendo excelente custo-benefício para sua casa.
