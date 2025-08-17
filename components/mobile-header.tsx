@@ -8,7 +8,7 @@ import { useSidebar } from "@/components/ui/sidebar";
 
 const menuOptions = [
   { name: "Ar Condicionado Midea", path: "/ar-condicionado-midea" },
-  { name: "Eletrodomésticos Midea", path: "/electrodomesticos" },
+  { name: "Eletrodomésticos Midea", path: "/electrodomesticos-media" },
   { name: "Soluções de Energia Midea", path: "/solucoes-de-energia-midea" },
 ];
 
@@ -34,7 +34,7 @@ export const MobileHeader = () => {
 
         {/* Logo (à esquerda) */}
         <div className="flex-shrink-0">
-          <Image src={"/midea.png"} alt="Logo" height={60} width={100} />
+          <Link href={"/"}><Image src={"/midea.png"} alt="Logo" height={60} width={100} /></Link>
         </div>
 
         {/* Menu Centralizado (apenas para dispositivos maiores) */}
@@ -50,7 +50,7 @@ export const MobileHeader = () => {
         <div className="flex gap-3 md:gap-5 items-center ml-auto">
           <HeartIcon className="cursor-pointer h-5 w-5 md:h-6 md:w-6" />
           <User2 className="cursor-pointer h-5 w-5 md:h-6 md:w-6" />
-          <Image src={"/shopping-cart.svg"} height={20} width={20} alt="Carrinho" className="md:h-[25px] md:w-[25px]" />
+          <Image src={"/shopping-cart.svg"} height={20} width={20} alt="Carrinho" className="md:h-[25px] md:w-[25px] cursor-pointer" />
         </div>
       </div>
     </header>

@@ -24,7 +24,7 @@ export const ComoPodemosAjudar = () => {
   }
 
   const handleAssistenciaClick = () => {
-   router.push('/assistencia-tecnica') ;
+   router.push('/assistencia-tecnica/online') ;
   }
 
   const opcoes = [

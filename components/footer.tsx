@@ -19,7 +19,7 @@ export const Footer = () => {
                 <div key={index}>
                   <Link
                     href={menu.path}
-                    className="hover:underline hover:text-blue-500"
+                    className="hover:underline"
                   >
                     {menu.name}
                   </Link>
