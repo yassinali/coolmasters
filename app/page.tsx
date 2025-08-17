@@ -6,10 +6,30 @@ import { CarouselPage } from "./(main)/_components/carousel"
 import { MenuDestaque } from "./(main)/_components/menu-destaque"
 import Image from "next/image"
 import { MaisVendidos } from "./(main)/_components/mais-vendidos"
+import { ComoPodemosAjudar } from "./(main)/_components/como-podemos-ajudar"
 
 export default function MideaPage() {
 
-  
+    const opcoes = [
+    {
+      titulo: "Whatsapp",
+      descricao:
+        "Fale com a gente pelo aplicativo de mensagens, facilitando ainda mais o contato com a nossa equipe.",
+      botao: "Conversar agora",
+    },
+    {
+      titulo: "Reparo no produto",
+      descricao:
+        "Para produtos dentro da garantia é necessário entrar em contato para acionarmos a assistência técnica.",
+      botao: "Conversar agora",
+    },
+    {
+      titulo: "Assistência Técnica",
+      descricao:
+        "Para produtos fora da garantia, basta realizar o agendamento com a autorizada mais próxima de você!",
+      botao: "Consulte a rede credenciada",
+    },
+  ];
   
   return (
     <div className="min-h-screen bg-gray-10">
@@ -65,7 +85,7 @@ export default function MideaPage() {
         </div>
 
         {/* About Section */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center bg-gray-100">
           <h2 className="text-2xl font-bold mb-4">
             Eletrodomésticos Midea: lava e seca, Geleira, frigobar, lava loiças e mais!
           </h2>
@@ -77,6 +97,7 @@ export default function MideaPage() {
         </div>
 
       </div>
+     <ComoPodemosAjudar/>
 
       {/* Footer */}
      <Footer/>
