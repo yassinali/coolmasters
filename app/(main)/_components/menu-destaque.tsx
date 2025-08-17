@@ -23,7 +23,7 @@ export const MenuDestaque = () => {
   ];
 
   return (
-    <div className="flex flex-col justify-center items-center p-4 bg-white">
+    <div className="flex flex-col justify-center items-center p-4 bg-gray-50">
       <h2 className="text-5xl font-semibold mb-4">O que você procura no Midea Day?</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 w-full">

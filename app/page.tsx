@@ -6,6 +6,7 @@ import { MenuDestaque } from "./(main)/_components/menu-destaque"
 import Image from "next/image"
 import { ComoPodemosAjudar } from "./(main)/_components/como-podemos-ajudar"
 import { MideaProducts } from "./(main)/_components/mais-vendidos"
+import { Promocao } from "./(main)/_components/promocao"
 
 export default function MideaPage() {
   return (
@@ -25,7 +26,7 @@ export default function MideaPage() {
           <MenuDestaque />
         </div>
 
-        <div className="mt-10 mb-10 w-full">
+        <div className="mt-10 mb-10 w-full bg-gray-50">
           <Image
             src="/coolmaster-default.jpg"
             alt="Banner Coolmaster"
@@ -39,7 +40,7 @@ export default function MideaPage() {
           <MideaProducts />
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 mt-20 gap-5 bg-slate-400">C</div>
+        <Promocao/>
 
         <div className="container mx-auto px-4 py-6">
           <div className="flex gap-6">
