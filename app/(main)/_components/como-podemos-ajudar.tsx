@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export const ComoPodemosAjudar = () => {
@@ -44,9 +45,10 @@ export const ComoPodemosAjudar = () => {
               <div className="text-5xl mb-4 mt-5"><Image src={opcao.imagem} alt="" height={50} width={70}/> </div>
             <p className="text-gray-600 mt-3">{opcao.descricao}</p>
 
-            <button className="mt-6 px-6 py-2 border border-black rounded-full">
+            <Button className="mt-6 px-6 py-2 border border-black rounded-full">
               {opcao.botao}
-            </button>
+             
+            </Button>
           </div>
         ))}
       </div>

@@ -24,12 +24,12 @@ export const MenuDestaque = () => {
 
   return (
     <div className="flex flex-col justify-center items-center p-4 bg-white">
-      <h2 className="text-lg font-semibold mb-4">Explorar as categorias</h2>
+      <h2 className="text-5xl font-semibold mb-4">O que você procura no Midea Day?</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6 w-full">
         {opcoesDestaque.map((opcao, index) => (
           <Link href={opcao.path} key={index}>
-            <Card className="bg-gray-100 hover:shadow-md transition rounded-xl">
+            <Card className="bg-gray-100 hover:shadow-md transition rounded-xl border-none">
               <CardContent className="flex flex-col items-center justify-center p-4">
                 <div className="w-[150px] h-[150px] flex justify-center items-center">
                   <Image
