@@ -34,7 +34,7 @@ export const MobileHeader = () => {
 
         {/* Logo (à esquerda) */}
         <div className="flex-shrink-0">
-          <Link href={"/"}><Image src={"/midea.png"} alt="Logo" height={60} width={100} /></Link>
+          <Link href={"/"}><Image src={"/Cool-logo.gif"} alt="Logo" height={60} width={100} /></Link>
         </div>
 
         {/* Menu Centralizado (apenas para dispositivos maiores) */}
