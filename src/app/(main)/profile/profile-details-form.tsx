@@ -30,10 +30,10 @@ const updateProfileSchema = z.object({
 export type UpdateProfileValues = z.infer<typeof updateProfileSchema>;
 
 interface ProfileDetailsFormProps {
-  user: User
+  user: User;
 }
 
-export function ProfileDetailsForm({user}: ProfileDetailsFormProps) {
+export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -48,15 +48,15 @@ export function ProfileDetailsForm({user}: ProfileDetailsFormProps) {
   });
 
   async function onSubmit({ name, image }: UpdateProfileValues) {
-    setStatus(null)
-    setError(null)
+    setStatus(null);
+    setError(null);
 
-    const {error} = await authClient.updateUser({name, image})
+    const { error } = await authClient.updateUser({ name, image });
 
     if (error) {
-      setError(error.message || "Failed to update profile")
+      setError(error.message || "Failed to update profile");
     } else {
-      setStatus("Profile updated")
+      setStatus("Profile updated");
       router.refresh();
     }
   }
