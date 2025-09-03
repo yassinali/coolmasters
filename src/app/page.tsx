@@ -16,9 +16,7 @@ export default function Home() {
          Em manutencao
         </p>
         <div className="mx-auto mt-6 flex max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
-          <Button asChild>
-            <Link href="/dashboard">Dashboard</Link>
-          </Button>
+          
           <Button asChild variant="outline">
             <Link href="/sign-in">Entrar</Link>
           </Button>
