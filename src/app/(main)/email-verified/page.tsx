@@ -11,13 +11,13 @@ export default function EmailVerifiedPage() {
     <main className="flex flex-1 items-center justify-center px-4 text-center">
       <div className="space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold">Email verified</h1>
+          <h1 className="text-2xl font-semibold">E-mail verificado</h1>
           <p className="text-muted-foreground">
-            Your email has been verified successfully.
+            Seu e-mail foi verificado com sucesso.
           </p>
         </div>
         <Button asChild>
-          <Link href="/dashboard">Go to dashboard</Link>
+          <Link href="/dashboard">Dashboard</Link>
         </Button>
       </div>
     </main>

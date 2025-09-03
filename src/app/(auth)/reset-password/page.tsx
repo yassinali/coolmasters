@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ResetPasswordForm } from "./reset-password-form";
 
 export const metadata: Metadata = {
-  title: "Reset password",
+  title: "Redefinir senha",
 };
 
 interface ResetPasswordPageProps {
@@ -35,8 +35,8 @@ function ResetPasswordUI({ token }: ResetPasswordUIProps) {
   return (
     <div className="w-full space-y-6">
       <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-semibold">Reset password</h1>
-        <p className="text-muted-foreground">Enter your new password below.</p>
+        <h1 className="text-2xl font-semibold">Redefinir senha</h1>
+        <p className="text-muted-foreground">Digite sua nova senha.</p>
       </div>
       <ResetPasswordForm token={token} />
     </div>

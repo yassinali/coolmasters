@@ -31,15 +31,15 @@ import { z } from "zod";
 
 const signUpSchema = z
   .object({
-    name: z.string().min(1, { message: "Name is required" }),
-    email: z.email({ message: "Please enter a valid email" }),
+    name: z.string().min(1, { message: "Nome obrigatorio" }),
+    email: z.email({ message: "Porfavor, digite um email valido" }),
     password: passwordSchema,
     passwordConfirmation: z
       .string()
-      .min(1, { message: "Please confirm password" }),
+      .min(1, { message: "Porfavor, confirme a senha" }),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
-    message: "Passwords do not match",
+    message: "Senhas nao conferem",
     path: ["passwordConfirmation"],
   });
 
@@ -71,9 +71,9 @@ export function SignUpForm() {
     });
 
     if (error) {
-      setError(error.message || "Something went wrong");
+      setError(error.message || "Algo deu errado");
     } else {
-      toast.success("Signed up successfully");
+      toast.success("Acesso garantido");
       router.push("/dashboard");
     }
   }
@@ -85,7 +85,7 @@ export function SignUpForm() {
       <CardHeader>
         <CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
         <CardDescription className="text-xs md:text-sm">
-          Enter your information to create an account
+          Insira suas informações para criar uma conta
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -96,9 +96,9 @@ export function SignUpForm() {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="Coolmastersmz" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -114,7 +114,7 @@ export function SignUpForm() {
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="your@coolmastersmz.com"
                       {...field}
                     />
                   </FormControl>
@@ -128,11 +128,11 @@ export function SignUpForm() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Senha</FormLabel>
                   <FormControl>
                     <PasswordInput
                       autoComplete="new-password"
-                      placeholder="Password"
+                      placeholder="Senha"
                       {...field}
                     />
                   </FormControl>
@@ -150,7 +150,7 @@ export function SignUpForm() {
                   <FormControl>
                     <PasswordInput
                       autoComplete="new-password"
-                      placeholder="Confirm password"
+                      placeholder="Confirme a senha"
                       {...field}
                     />
                   </FormControl>
@@ -174,7 +174,7 @@ export function SignUpForm() {
       <CardFooter>
         <div className="flex w-full justify-center border-t pt-4">
           <p className="text-muted-foreground text-center text-xs">
-            Already have an account?{" "}
+            Ja tem uma conta?{" "}
             <Link href="/sign-in" className="underline">
               Sign in
             </Link>

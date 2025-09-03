@@ -14,6 +14,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ProductStatus {
+  new
+  hot
+  sale
+}
+
+enum ProductVariant {
+  gadget
+  appliances
+  refrigerators
+  others
+}
+
 model User {
   id            String    @id
   name          String
@@ -73,4 +86,42 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  name        String?
+  slug        String?
+  description String?
+  price       Float? @default(0)
+  discount    Float? @default(0)
+  stock       Int?   @default(10)
+  status      ProductStatus?
+  variant     ProductVariant?
+  isFeatured  Boolean?      @default(false)
+  brandId     String?
+  brand       Brand?        @relation(fields: [brandId], references: [id])
+  categories  Category[]    @relation("ProductCategories")
+  images      Json?         // poderia normalizar, mas simplifiquei
+  //orderItems  OrderProduct[]
+}
+
+model Brand {
+  id          String    @id @default(cuid())
+  title       String?
+  slug        String?
+  description String?
+  imageUrl    String?
+  products    Product[]
+}
+
+model Category {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  description String?
+  order       Int?       // controla posição de exibição no frontend
+  featured    Boolean    @default(false)
+  imageUrl    String?    // opcional: só se quiser mostrar banner/ícone
+  products    Product[]  @relation("ProductCategories")
 }

@@ -1,15 +1,12 @@
 "use client";
 
-import { GitHubIcon } from "@/components/icons/GitHubIcon";
-import { GoogleIcon } from "@/components/icons/GoogleIcon";
 import { LoadingButton } from "@/components/loading-button";
 import { PasswordInput } from "@/components/password-input";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
+
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -71,35 +68,19 @@ export function SignInForm() {
     setLoading(false);
 
     if (error) {
-      setError(error.message || "Something went wrong");
+      setError(error.message || "Algo deu erradog");
     } else {
-      toast.success("Signed in successfully");
+      toast.success("Acesso garantido");
       router.push(redirect ?? "/dashboard");
-    }
-  }
-
-  async function handleSocialSignIn(provider: "google" | "github") {
-    setError(null);
-    setLoading(true);
-
-    const { error } = await authClient.signIn.social({
-      provider,
-      callbackURL: redirect ?? "/dashboard",
-    });
-
-    setLoading(false);
-
-    if (error) {
-      setError(error.message || "Something went wrong");
     }
   }
 
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
+        <CardTitle className="text-lg md:text-xl">Entrar</CardTitle>
         <CardDescription className="text-xs md:text-sm">
-          Enter your email below to login to your account
+          Digite seu e-mail abaixo para acessar sua conta
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -110,11 +91,11 @@ export function SignInForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>E-mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="your@coolmastersmz.com"
                       {...field}
                     />
                   </FormControl>
@@ -134,13 +115,13 @@ export function SignInForm() {
                       href="/forgot-password"
                       className="ml-auto inline-block text-sm underline"
                     >
-                      Forgot your password?
+                      Esqueceu sua senha?
                     </Link>
                   </div>
                   <FormControl>
                     <PasswordInput
                       autoComplete="current-password"
-                      placeholder="Password"
+                      placeholder="Senha"
                       {...field}
                     />
                   </FormControl>
@@ -160,7 +141,7 @@ export function SignInForm() {
                       onCheckedChange={field.onChange}
                     />
                   </FormControl>
-                  <FormLabel>Remember me</FormLabel>
+                  <FormLabel>Lembrar-me</FormLabel>
                 </FormItem>
               )}
             />
@@ -175,42 +156,11 @@ export function SignInForm() {
               Login
             </LoadingButton>
 
-            <div className="flex w-full flex-col items-center justify-between gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full gap-2"
-                disabled={loading}
-                onClick={() => handleSocialSignIn("google")}
-              >
-                <GoogleIcon width="0.98em" height="1em" />
-                Sign in with Google
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full gap-2"
-                disabled={loading}
-                onClick={() => handleSocialSignIn("github")}
-              >
-                <GitHubIcon />
-                Sign in with Github
-              </Button>
-            </div>
+           
           </form>
         </Form>
       </CardContent>
-      <CardFooter>
-        <div className="flex w-full justify-center border-t pt-4">
-          <p className="text-muted-foreground text-center text-xs">
-            Don&apos;t have an account?{" "}
-            <Link href="/sign-up" className="underline">
-              Sign up
-            </Link>
-          </p>
-        </div>
-      </CardFooter>
+     
     </Card>
   );
 }

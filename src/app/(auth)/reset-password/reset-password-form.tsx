@@ -70,11 +70,11 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
               name="newPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>New password</FormLabel>
+                  <FormLabel>Nova senha</FormLabel>
                   <FormControl>
                     <PasswordInput
                       autoComplete="new-password"
-                      placeholder="Enter new password"
+                      placeholder="Digite a sua nova senha"
                       {...field}
                     />
                   </FormControl>
@@ -95,7 +95,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
             )}
 
             <LoadingButton type="submit" className="w-full" loading={loading}>
-              Reset password
+              Redefinir senha
             </LoadingButton>
           </form>
         </Form>

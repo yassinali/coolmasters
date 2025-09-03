@@ -10,10 +10,10 @@ export default function ForgotPasswordPage() {
     <main className="flex min-h-svh items-center justify-center px-4">
       <div className="space-y-6 w-full">
         <div className="space-y-2 text-center">
-          <h1 className="text-2xl font-semibold">Forgot password</h1>
+          <h1 className="text-2xl font-semibold">Esqueceu sua senha?</h1>
           <p className="text-muted-foreground">
-            Enter your email address and we&apos;ll send you a link to reset
-            your password.
+            Digite seu endereço de e-mail e enviaremos um link para redefinir
+sua senha.
           </p>
         </div>
         <ForgotPasswordForm />

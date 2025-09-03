@@ -17,9 +17,9 @@ export function LogoutEverywhereButton() {
     setLoading(false);
 
     if (error) {
-      toast.error(error.message || "Failed to log out everywhere");
+      toast.error(error.message || "Falha ao sair em todos os dispositivos");
     } else {
-      toast.success("Logged out from all devices");
+      toast.success("Desconectado de todos os dispositivos");
       router.push("/sign-in");
     }
   }

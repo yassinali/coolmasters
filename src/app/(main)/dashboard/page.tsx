@@ -32,7 +32,7 @@ export default async function DashboardPage() {
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold">Dashboard</h1>
           <p className="text-muted-foreground">
-            Welcome back! Here&apos;s your account overview.
+            Bem vindo a Coomasters.
           </p>
         </div>
         {!user.emailVerified && <EmailVerificationAlert />}
@@ -52,10 +52,10 @@ function ProfileInformation({ user }: ProfileInformationProps) {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <UserIcon className="size-5" />
-          Profile Information
+          Informações do perfil
         </CardTitle>
         <CardDescription>
-          Your account details and current status
+          Detalhes da sua conta
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -81,12 +81,9 @@ function ProfileInformation({ user }: ProfileInformationProps) {
             </div>
 
             <div className="space-y-2">
-              <div className="text-muted-foreground flex items-center gap-2 text-sm">
-                <CalendarDaysIcon className="size-4" />
-                Member Since
-              </div>
-              <p className="font-medium">
-                {format(user.createdAt, "MMMM d, yyyy")}
+              
+              <p className="text-muted-foreground text-xs italic">
+                {format(user.createdAt, "d MMMM yyyy")}
               </p>
             </div>
           </div>
@@ -103,7 +100,7 @@ function EmailVerificationAlert() {
         <div className="flex items-center gap-3">
           <MailIcon className="size-5 text-yellow-600 dark:text-yellow-400" />
           <span className="text-yellow-800 dark:text-yellow-200">
-            Please verify your email address to access all features.
+            Verifique seu endereço de e-mail para acessar todos os recursos.
           </span>
         </div>
         <Button size="sm" asChild>

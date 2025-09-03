@@ -19,9 +19,9 @@ export default async function VerifyEmailPage() {
     <main className="flex flex-1 items-center justify-center px-4 text-center">
       <div className="space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold">Verify your email</h1>
+          <h1 className="text-2xl font-semibold">Verificar e-mail</h1>
           <p className="text-muted-foreground">
-            A verification email was sent to your inbox.
+           Um e-mail de verificação foi enviado para sua caixa de entrada.
           </p>
         </div>
         <ResendVerificationButton email={user.email} />

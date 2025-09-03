@@ -6,14 +6,14 @@ export default function ForbiddenPage() {
     <main className="flex grow items-center justify-center px-4 text-center">
       <div className="space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold">403 - Forbidden</h1>
+          <h1 className="text-2xl font-semibold">403 - Proibido</h1>
           <p className="text-muted-foreground">
-            You don&apos;t have access to this page.
+            Nao tens acesso a esta pagina.
           </p>
         </div>
         <div>
           <Button asChild>
-            <Link href="/dashboard">Go to Dashboard</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </Button>
         </div>
       </div>

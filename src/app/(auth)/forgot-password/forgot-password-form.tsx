@@ -42,10 +42,10 @@ export function ForgotPasswordForm() {
     });
 
     if (error) {
-      setError(error.message || "Something went wrong");
+      setError(error.message || "Algo deu errado");
     } else {
       setSuccess(
-        "If an account exists for this email, we've sent a password reset link.",
+        "Se existir uma conta para este e-mail, enviamos um link para redefinição de senha.",
       );
       form.reset();
     }
@@ -63,11 +63,11 @@ export function ForgotPasswordForm() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>E-mail</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="your@coolmastersmz.com"
                       {...field}
                     />
                   </FormControl>
@@ -88,7 +88,7 @@ export function ForgotPasswordForm() {
             )}
 
             <LoadingButton type="submit" className="w-full" loading={loading}>
-              Send reset link
+              Enviar link de redefinição
             </LoadingButton>
           </form>
         </Form>

@@ -90,9 +90,9 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
-                    <Input {...field} placeholder="Full name" />
+                    <Input {...field} placeholder="Nome completo" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -104,7 +104,7 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
               name="image"
               render={() => (
                 <FormItem>
-                  <FormLabel>Profile image</FormLabel>
+                  <FormLabel>Imagem de perfil</FormLabel>
                   <FormControl>
                     <Input
                       type="file"
@@ -129,7 +129,7 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
                   variant="ghost"
                   className="absolute -top-2 -right-2 size-6 rounded-full"
                   onClick={() => form.setValue("image", null)}
-                  aria-label="Remove image"
+                  aria-label="Remover imagem"
                 >
                   <XIcon className="size-4" />
                 </Button>
@@ -147,7 +147,7 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
               </div>
             )}
             <LoadingButton type="submit" loading={loading}>
-              Save changes
+              Gravar alterações
             </LoadingButton>
           </form>
         </Form>

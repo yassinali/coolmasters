@@ -11,12 +11,12 @@ export default function UnauthorizedPage() {
     <main className="flex grow items-center justify-center px-4 text-center">
       <div className="space-y-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-semibold">401 - Unauthorized</h1>
-          <p className="text-muted-foreground">Please sign in to continue.</p>
+          <h1 className="text-2xl font-semibold">401 - Nao autorizado</h1>
+          <p className="text-muted-foreground">Porfavor, faca login para ter acesso.</p>
         </div>
         <div>
           <Button asChild>
-            <Link href={`/sign-in?redirect=${pathname}`}>Sign in</Link>
+            <Link href={`/sign-in?redirect=${pathname}`}>Entrar</Link>
           </Button>
         </div>
       </div>

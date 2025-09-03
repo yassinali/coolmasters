@@ -20,12 +20,12 @@ export async function Navbar() {
         >
           <Image
             src={codingInFlowLogo}
-            alt="Coding in Flow logo"
+            alt="Coolmasters"
             width={32}
             height={32}
             className="border-muted rounded-full border"
           />
-          Better-Auth Tutorial
+          Coolmastersmz
         </Link>
         <div className="flex items-center gap-2">
           <ModeToggle />
