@@ -11,7 +11,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { User } from "@/lib/auth";
 import { getServerSession } from "@/lib/get-session";
 import { format } from "date-fns";
-import { CalendarDaysIcon, MailIcon, ShieldIcon, UserIcon } from "lucide-react";
+import {  MailIcon, ShieldIcon, UserIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { unauthorized } from "next/navigation";

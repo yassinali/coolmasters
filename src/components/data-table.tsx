@@ -24,8 +24,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import React from "react"
-import { Trash } from "lucide-react"
-
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
@@ -37,7 +35,6 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   filterKey,
-  disabled,
 }: DataTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -61,9 +58,9 @@ export function DataTable<TData, TValue>({
     })
 
     // Função para limpar o filtro ao clicar no ícone de lixo
-    const handleClearFilter = () => {
-        setColumnFilters([])  // Reseta todos os filtros
-    }
+    // const handleClearFilter = () => {
+    //     setColumnFilters([])  // Reseta todos os filtros
+    // }
 
     return (
         <div>

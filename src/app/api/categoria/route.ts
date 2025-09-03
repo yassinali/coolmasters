@@ -44,7 +44,7 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   const session = await getServerSession(); // precisa de await aqui
   if (!session) {
     return new NextResponse("Nao autorizado", { status: 401 });

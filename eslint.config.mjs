@@ -20,6 +20,7 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "src/generated/prisma/**", // ⬅️ Adicione isto para ignorar arquivos gerados pelo Prisma
     ],
   },
 ];

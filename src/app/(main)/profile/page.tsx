@@ -1,7 +1,6 @@
 import { getServerSession } from "@/lib/get-session";
 import type { Metadata } from "next";
 import { unauthorized } from "next/navigation";
-import { EmailForm } from "./email-form";
 import { LogoutEverywhereButton } from "./logout-everywhere-button";
 import { PasswordForm } from "./password-form";
 import { ProfileDetailsForm } from "./profile-details-form";

@@ -33,7 +33,7 @@ export async function PATCH(
       );
     }
 
-    const { title, description, imageUrl } = body;
+    const { title, description } = body;
 
     // Busca o funcionário pelo ID
     const categoria = await prisma.category.findUnique({
