@@ -36,7 +36,7 @@ const HomeTabBar = ({ selectedTab, onTabSelect, categories }: Props) => {
         href={"/comprar"}
         className={`border-shop_light_green/30 hover:bg-shop_light_green hover:border-shop_light_green hoverEffect rounded-full border px-4 py-1.5 md:px-6 md:py-2`}
       >
-        Ver todos
+        Ver todos categoria
       </Link>
     </div>
   );
