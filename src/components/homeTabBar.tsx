@@ -1,43 +1,45 @@
-import prisma from "@/lib/prisma";
 import Link from "next/link";
 import React from "react";
 
-// interface Props {
-//   selectedTab: string;
-//   onTabSelect: (tab: string) => void;
-// }
+// Adicionando a interface Category para tipar corretamente os dados
+interface Category {
+  id: string;
+  title: string | null;
+}
 
-const HomeTabBar = async () =>
-  // { selectedTab, onTabSelect }: Props
+// A interface Props agora espera um array de Categories
+interface Props {
+  selectedTab: string;
+  onTabSelect: (tab: string) => void;
+  categories: Category[];
+}
 
-  {
-    const tabCategorias = await prisma.category.findMany({
-      take: 4,
-      orderBy: { id: "desc" },
-      skip: 0,
-      select: { id: true, title: true, slug: true },
-    });
-    return (
-      <div className="flex flex-wrap items-center justify-between gap-5">
-        <div className="flex items-center gap-3 text-sm font-semibold">
-          {tabCategorias.map((item) => (
-            <button
-              key={item.title}
-              // onClick={() => onTabSelect(item.title)}
-              className={`border-shop_light_green/30 hover:bg-shop_light_green hover:border-shop_light_green hoverEffect rounded-full border px-4 py-1.5 md:px-6 md:py-2`}
-            >
-              {item.title}
-            </button>
-          ))}
-        </div>
-        <Link
-          href={"/comprar"}
-          className={`border-shop_light_green/30 hover:bg-shop_light_green hover:border-shop_light_green hoverEffect rounded-full border px-4 py-1.5 md:px-6 md:py-2`}
-        >
-          Todos
-        </Link>
+const HomeTabBar = ({ selectedTab, onTabSelect, categories }: Props) => {
+  return (
+    <div className="flex flex-wrap items-center justify-between gap-5">
+      <div className="flex items-center gap-3 text-sm font-semibold">
+        {categories.map((category) => (
+          <button
+            key={category.id} // Usa o ID como chave, que é mais confiável que o título
+            onClick={() => onTabSelect(category.id)} // Passa o ID da categoria para a função de seleção
+            className={`border-shop_light_green/30 hover:bg-shop_light_green hover:border-shop_light_green hoverEffect rounded-full border px-4 py-1.5 md:px-6 md:py-2 ${
+              selectedTab === category.id
+                ? "bg-shop_light_green border-shop_light_green text-white"
+                : "bg-shop_light_green/20"
+            }`}
+          >
+            {category.title}
+          </button>
+        ))}
       </div>
-    );
-  };
+      <Link
+        href={"/comprar"}
+        className={`border-shop_light_green/30 hover:bg-shop_light_green hover:border-shop_light_green hoverEffect rounded-full border px-4 py-1.5 md:px-6 md:py-2`}
+      >
+        See all
+      </Link>
+    </div>
+  );
+};
 
 export default HomeTabBar;
