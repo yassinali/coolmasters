@@ -12,33 +12,38 @@ function generateSlug(text: string): string {
     .replace(/\s+/g, "-"); // substitui espaços por "-"
 }
 
+// API corrigida
 export async function POST(req: Request) {
   try {
     const { title, description } = await req.json();
 
-    const session = await getServerSession(); // precisa de await aqui
+    const session = await getServerSession();
     if (!session) {
-      return new NextResponse("Nao autorizado", { status: 401 });
+      return NextResponse.json({ message: "Não autorizado" }, { status: 401 });
     }
 
     const slug = generateSlug(title);
-    
-    const result = await prisma.category.create({
-      data: {
-        title,
-        slug,
-        description,
-      },
+
+    const slugExists = await prisma.category.findFirst({
+      where: { slug },
     });
 
-    return new NextResponse(
-      JSON.stringify({ id: result.id }),
+    if (slugExists) {
+      return NextResponse.json({ message: `A categoria ${title} já existe, registe outra categoria` }, { status: 409 });
+    }
+
+    const result = await prisma.category.create({
+      data: { title, slug, description },
+    });
+
+    return NextResponse.json(
+      { id: result.id, message: "Categoria criada com sucesso" },
       { status: 201 }
     );
   } catch (error) {
-    console.log("Categoria Erro:", error);
-    return new NextResponse(
-      "Erro interno de sistema. Tente novamente mais tarde.",
+    console.error("Categoria Erro:", error);
+    return NextResponse.json(
+      { message: "Erro interno de sistema. Tente novamente mais tarde." },
       { status: 500 }
     );
   }
@@ -59,6 +64,3 @@ export async function GET() {
     return new NextResponse("Falha ao carregar as categorias", { status: 500 });
   }
 }
-
-
-

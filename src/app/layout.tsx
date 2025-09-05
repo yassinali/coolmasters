@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/headerMain";
+import Footer from "@/components/footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -32,8 +34,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Toaster />
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+
+              <Toaster />
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

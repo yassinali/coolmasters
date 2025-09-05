@@ -1,11 +1,18 @@
-"use client"
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
@@ -31,9 +38,7 @@ export const NovaCategoriaCreateForm = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post("/api/categoria", values, {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
       });
 
       const categoriaId = response.data.id;
@@ -54,49 +59,49 @@ export const NovaCategoriaCreateForm = () => {
 
   return (
     <div>
-        <div>
-            <h1>Criar categoria</h1>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormField
-                    control={form.control}
-                    name="title"
-                    render={({field})=>(
-                        <FormItem>
-                            <FormLabel>Titulo</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Escrever o titulo" {...field}/>
-                            </FormControl>
-                            <FormMessage/>
-                        </FormItem>
-                    )}
-                    />
-                      <FormField
-                    control={form.control}
-                    name="description"
-                    render={({field})=>(
-                        <FormItem>
-                            <FormLabel>Descricao</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Escrever o titulo" {...field}/>
-                            </FormControl>
-                            <FormMessage/>
-                        </FormItem>
-                    )}
-                    />
-                    <Button type="submit" disabled={isSubmitting || !isValid}>
-                      {isSubmitting ? (
-                        <>
-                        <Loader2 className="animate-spin h-4 w-4"/>
-                        <p className="text-muted-foreground">Gravando...</p>
-                        </>
-                      ):(
-                        "Gravar"
-                      )}
-                      </Button>
-                </form>
-            </Form>
-        </div>
+      <div>
+        <h1>Criar categoria</h1>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Titulo</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Escrever o titulo" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Descricao</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Escrever o titulo" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" disabled={isSubmitting || !isValid}>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <p className="text-muted-foreground">Gravando...</p>
+                </>
+              ) : (
+                "Gravar"
+              )}
+            </Button>
+          </form>
+        </Form>
+      </div>
     </div>
-  )
+  );
 };

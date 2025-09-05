@@ -102,8 +102,7 @@ model Product {
   brandId     String?
   brand       Brand?        @relation(fields: [brandId], references: [id])
   categories  Category[]    @relation("ProductCategories")
-  images      Json?         // poderia normalizar, mas simplifiquei
-  //orderItems  OrderProduct[]
+  images      Images[]
 }
 
 model Brand {
@@ -124,4 +123,12 @@ model Category {
   featured    Boolean    @default(false)
   imageUrl    String?    // opcional: só se quiser mostrar banner/ícone
   products    Product[]  @relation("ProductCategories")
+}
+
+model Images{
+  id String @id @default(cuid())
+  imagesUrl String
+  default   Boolean @default(false)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
 }
