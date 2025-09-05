@@ -97,7 +97,6 @@ model Product {
   discount    Float? @default(0)
   stock       Int?   @default(10)
   status      ProductStatus?
-  variant     ProductVariant?
   isFeatured  Boolean?      @default(false)
   brandId     String?
   brand       Brand?        @relation(fields: [brandId], references: [id])

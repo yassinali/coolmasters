@@ -2,8 +2,7 @@ import { getServerSession } from "@/lib/get-session";
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
-// Função para gerar slug a partir do título
-function generateSlug(text: string): string {
+export function generateSlug(text: string): string {
   return text
     .toLowerCase() // tudo minúsculo
     .normalize("NFD") // separa acentos
@@ -23,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     const slug = generateSlug(title);
-    
+
     const result = await prisma.brand.create({
       data: {
         title,
@@ -32,31 +31,28 @@ export async function POST(req: Request) {
       },
     });
 
-    return new NextResponse(
-      JSON.stringify({ id: result.id }),
-      { status: 201 }
-    );
+    return new NextResponse(JSON.stringify({ id: result.id }), { status: 201 });
   } catch (error) {
     console.log("Marcas Erro:", error);
     return new NextResponse(
       "Erro interno de sistema. Tente novamente mais tarde.",
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-export async function GET(){
-const session = await getServerSession(); // precisa de await aqui
-    if (!session) {
-      return new NextResponse("Nao autorizado", { status: 401 });
-    }
+export async function GET() {
+  const session = await getServerSession(); // precisa de await aqui
+  if (!session) {
+    return new NextResponse("Nao autorizado", { status: 401 });
+  }
 
-   try {
-     const todasMarcas = await prisma.brand.findMany({})
+  try {
+    const todasMarcas = await prisma.brand.findMany({});
 
     return NextResponse.json(todasMarcas);
-   } catch (error) {
-    console.log("Erro ao carregar as marcas",error);
-    return new NextResponse("Falha ao carregar as marcas", {status: 500})
-   }
+  } catch (error) {
+    console.log("Erro ao carregar as marcas", error);
+    return new NextResponse("Falha ao carregar as marcas", { status: 500 });
+  }
 }

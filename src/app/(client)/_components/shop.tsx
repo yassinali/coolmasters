@@ -4,11 +4,17 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Container from "@/components/Container";
 import { Title } from "@/components/text";
-import { Product } from "@/generated/prisma";
+import { Product as PrismaProduct, Images } from "@/generated/prisma";
 import NoProductAvailable from "./NoProductAvailable";
 import { Loader2 } from "lucide-react";
 import CategoryList from "./categoryList";
 import BrandList from "./brandList";
+import ProductCard from "./productCard";
+
+// Cria um novo tipo que combina o tipo Product do Prisma com o array de Images
+type ProductWithImages = PrismaProduct & {
+  images: Images[];
+};
 
 interface Category {
   id: string;
@@ -35,7 +41,8 @@ const Shop: React.FC<ShopProps> = ({ categories, brands }) => {
   const brandParams = searchParams?.get("brand");
   const categoryParams = searchParams?.get("category");
 
-  const [products, setProducts] = useState<Product[]>([]);
+  // Altera o estado para usar o novo tipo
+  const [products, setProducts] = useState<ProductWithImages[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(
     categoryParams || null,
@@ -52,7 +59,8 @@ const Shop: React.FC<ShopProps> = ({ categories, brands }) => {
           `/api/products?category=${selectedCategory || ""}&brand=${selectedBrand || ""}`,
         );
         if (!res.ok) throw new Error("Erro ao buscar produtos");
-        const data: Product[] = await res.json();
+        // Converte a resposta para o novo tipo
+        const data: ProductWithImages[] = await res.json();
         setProducts(data);
       } catch (error) {
         console.error(error);
@@ -113,8 +121,7 @@ const Shop: React.FC<ShopProps> = ({ categories, brands }) => {
               <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 lg:grid-cols-4">
                 {products.map((product) => (
                   <div key={product.id} className="border p-2">
-                    {/* Aqui podes substituir por <ProductCard product={product} /> */}
-                    {product.name || "Produto"}
+                    <ProductCard product={product} />
                   </div>
                 ))}
               </div>
