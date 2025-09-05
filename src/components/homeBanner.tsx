@@ -14,7 +14,7 @@ const HomeBanner = () => {
           casa
         </Title>
         <Link
-          href={"/shop#"}
+          href={"/comprar"}
           className="bg-shop_dark_green/90 hover:bg-shop_dark_green hoverEffect rounded-md px-5 py-2 text-sm font-semibold text-white/90 hover:text-white"
         >
           Comprar agora

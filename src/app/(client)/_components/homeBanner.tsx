@@ -18,19 +18,19 @@ export default function BannerCarousel() {
     {
       title:
         "Até 15% de desconto nos melhores <br /> electrodomésticos para a sua casa",
-      button: { text: "Comprar agora", href: "/shop" },
+      button: { text: "Comprar agora", href: "/comprar" },
       image:
         "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhmlaZEJNjO7qBVA3xSMXdLgwUNR21nmKPjluJcp",
     },
     {
       title: "Promoções imperdíveis em electrodomésticos <br /> e portáteis",
-      button: { text: "Ver ofertas", href: "/shop" },
+      button: { text: "Ver ofertas", href: "/comprar" },
       image:
         "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhml4L7iDKPL9eqGlf8zRTCNpVK0ncHYU6FvtEwD",
     },
     {
       title: "Os melhores electrodomésticos <br /> com entrega rápida",
-      button: { text: "Explorar agora", href: "/shop" },
+      button: { text: "Explorar agora", href: "/comprar" },
       image:
         "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhml7tyWCrTZYM58omvRIVXDurgAKCe3BlPL6GtQ",
     },

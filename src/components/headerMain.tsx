@@ -1,6 +1,5 @@
 import CartIcon from "./cartIcon";
 import Container from "./Container";
-import FavoriteButton from "./favoriteButton";
 import HeaderMenu from "./headerMenu";
 import Logo from "./logo";
 import MobileMenu from "./mobileMenu";

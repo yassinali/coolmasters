@@ -40,7 +40,7 @@ const ShopByBrand = async () => {
       <div className="mb-10 flex items-center justify-between gap-5">
         <Title>Nossas marcas</Title>
         <Link
-          href={`/shop#`}
+          href={`/comprar`}
           className="hover:text-shop_btn_dark_green hoverEffect text-sm font-semibold tracking-wide"
         >
           Ver todos

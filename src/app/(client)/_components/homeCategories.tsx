@@ -11,7 +11,15 @@ const HomeCategories = async () => {
   const categories = await prisma.category.findMany({
     take: 6,
     orderBy: { id: "asc" },
-    select: { id: true, title: true, slug: true, imageUrl: true },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      imageUrl: true,
+      _count: {
+        select: { products: true },
+      },
+    },
   });
 
   return (
@@ -28,7 +36,7 @@ const HomeCategories = async () => {
               <div className="border-shop_orange/30 hover:border-shop_orange hoverEffect h-20 w-20 overflow-hidden border p-1">
                 <Link
                   href={{
-                    pathname: "/shop#",
+                    pathname: "/comprar",
                     query: { category: category?.slug },
                   }}
                 >
@@ -45,7 +53,9 @@ const HomeCategories = async () => {
             <div className="space-y-2">
               <h3 className="text-base font-semibold">{category.title}</h3>
               <p className="text-sm">
-                <span className="text-shop_dark_green font-bold">{`(5)`}</span>{" "}
+                <span className="text-shop_dark_green font-bold">
+                  ({category._count.products})
+                </span>{" "}
                 Items available
               </p>
             </div>
