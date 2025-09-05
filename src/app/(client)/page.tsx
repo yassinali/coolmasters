@@ -1,8 +1,8 @@
 import Container from "@/components/Container";
-import HomeBanner from "./(client)/_components/homeBanner";
-import ProductGrid from "./(client)/_components/productGrid";
-import ShopByBrand from "./(client)/_components/shopByBrand";
-import HomeCategories from "./(client)/_components/homeCategories";
+import HomeBanner from "./_components/homeBanner";
+import HomeCategories from "./_components/homeCategories";
+import ProductGrid from "./_components/productGrid";
+import ShopByBrand from "./_components/shopByBrand";
 
 export default function Home() {
   return (
