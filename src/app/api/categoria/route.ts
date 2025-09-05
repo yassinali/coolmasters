@@ -29,7 +29,10 @@ export async function POST(req: Request) {
     });
 
     if (slugExists) {
-      return NextResponse.json({ message: `A categoria ${title} já existe, registe outra categoria` }, { status: 409 });
+      return NextResponse.json(
+        { message: `A categoria ${title} já existe, registe outra categoria` },
+        { status: 409 },
+      );
     }
 
     const result = await prisma.category.create({
@@ -38,22 +41,22 @@ export async function POST(req: Request) {
 
     return NextResponse.json(
       { id: result.id, message: "Categoria criada com sucesso" },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("Categoria Erro:", error);
     return NextResponse.json(
       { message: "Erro interno de sistema. Tente novamente mais tarde." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function GET() {
-  const session = await getServerSession(); // precisa de await aqui
-  if (!session) {
-    return new NextResponse("Nao autorizado", { status: 401 });
-  }
+  // const session = await getServerSession(); // precisa de await aqui
+  // if (!session) {
+  //   return new NextResponse("Nao autorizado", { status: 401 });
+  // }
 
   try {
     const todasCategorias = await prisma.category.findMany({});
