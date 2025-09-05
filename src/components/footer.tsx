@@ -54,8 +54,8 @@ const Footer = () => {
           <div className="space-y-4">
             <SubTitle>Newsletter</SubTitle>
             <SubText>
-              Assine nossa newsletter para receber actualizações e ofertas
-              exclusivas
+              Inscreva-se para receber nossa newsletter com as últimas novidades
+              e promoções.
             </SubText>
             <form className="space-y-3">
               <Input
