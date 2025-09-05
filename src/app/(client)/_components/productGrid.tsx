@@ -68,7 +68,7 @@ const ProductGrid = () => {
       <div className="mt-10 flex min-h-80 w-full flex-col items-center justify-center gap-4 bg-gray-100 py-10">
         <div className="flex items-center space-x-2 text-blue-600">
           <Loader2 className="size-5 animate-spin" />
-          <span>Loading categories...</span>
+          <span>Carregando categorias...</span>
         </div>
       </div>
     );
@@ -85,7 +85,7 @@ const ProductGrid = () => {
         <div className="mt-10 flex min-h-80 w-full flex-col items-center justify-center gap-4 bg-gray-100 py-10">
           <div className="flex items-center space-x-2 text-blue-600">
             <Loader2 className="size-5 animate-spin" />
-            <span>Product is loading...</span>
+            <span>Carregando produtos...</span>
           </div>
         </div>
       ) : products?.length > 0 ? (
