@@ -36,7 +36,6 @@ const HomePage = async ({ params }: PageProps) => {
     slug: produtoDados?.slug || "",
     description: produtoDados?.description || "",
     brandId: produtoDados?.brandId,
-    //  imageUrl: produtoDados?.imageUrl || "",
   };
 
   return (
@@ -50,12 +49,7 @@ const HomePage = async ({ params }: PageProps) => {
                 produtoId={(await params).marcaId}
               />
             </div>
-            <div>
-              {/* <MarcaImagem
-                marcaId={(await params).marcaId}
-                dadosIniciais={dadosIniciais}
-              /> */}
-            </div>
+            <div></div>
           </div>
         </div>
       </div>

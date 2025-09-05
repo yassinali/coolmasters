@@ -14,11 +14,11 @@ interface PageProps {
 }
 
 const SingleProductPage = async ({ params }: PageProps) => {
-  const slug = await params;
+  const { slug } = await params;
 
   const product = await prisma.product.findFirst({
     where: {
-      slug: (await params).slug,
+      slug,
     },
     include: {
       images: true, // Adiciona o `include` para carregar as imagens
@@ -63,42 +63,42 @@ const SingleProductPage = async ({ params }: PageProps) => {
         <div className="-mt-2 flex flex-wrap items-center justify-between gap-2.5 border-b border-b-gray-200 py-5">
           <div className="hoverEffect flex items-center gap-2 text-sm text-black hover:text-red-600">
             <RxBorderSplit className="text-lg" />
-            <p>Compare color</p>
+            <p>Comparar cores</p>
           </div>
-          <div className="hoverEffect flex items-center gap-2 text-sm text-black hover:text-red-600">
+          <div className="hoverEffect flex items-center gap-2 text-xs text-black hover:text-red-600">
             <FaRegQuestionCircle className="text-lg" />
-            <p>Ask a question</p>
+            <p>Fazer uma pergunta</p>
           </div>
-          <div className="hoverEffect flex items-center gap-2 text-sm text-black hover:text-red-600">
+          <div className="hoverEffect flex items-center gap-2 text-xs text-black hover:text-red-600">
             <TbTruckDelivery className="text-lg" />
-            <p>Delivery & Return</p>
+            <p>Entrega e devolução</p>
           </div>
-          <div className="hoverEffect flex items-center gap-2 text-sm text-black hover:text-red-600">
+          <div className="hoverEffect flex items-center gap-2 text-xs text-black hover:text-red-600">
             <FiShare2 className="text-lg" />
-            <p>Share</p>
+            <p>Partilhar</p>
           </div>
         </div>
         <div className="flex flex-col">
           <div className="border-lightColor/25 flex items-center gap-2.5 border border-b-0 p-3">
-            <Truck size={30} className="text-shop_orange" />
+            <Truck size="30" className="text-shop_orange" />
             <div>
               <p className="text-base font-semibold text-black">
-                Free Delivery
+                Entrega Gratuita
               </p>
               <p className="text-sm text-gray-500 underline underline-offset-2">
-                Enter your Postal code for Delivey Availability.
+                Introduza o seu Código Postal para Disponibilidade de Entrega.
               </p>
             </div>
           </div>
           <div className="border-lightColor/25 flex items-center gap-2.5 border p-3">
-            <CornerDownLeft size={30} className="text-shop_orange" />
+            <CornerDownLeft size="30" className="text-shop_orange" />
             <div>
               <p className="text-base font-semibold text-black">
-                Return Delivery
+                Devolução de Entrega
               </p>
               <p className="text-sm text-gray-500">
-                Free 30days Delivery Returns.{" "}
-                <span className="underline underline-offset-2">Details</span>
+                Devoluções Gratuitas em 30 dias.{" "}
+                <span className="underline underline-offset-2">Detalhes</span>
               </p>
             </div>
           </div>
