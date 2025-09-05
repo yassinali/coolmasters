@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
 
 const NoProductAvailable = ({
@@ -24,7 +24,7 @@ const NoProductAvailable = ({
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold text-gray-800">
-          Sem productos disponiveis
+          Sem produtos disponíveis
         </h2>
       </motion.div>
 
@@ -34,11 +34,11 @@ const NoProductAvailable = ({
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-gray-600"
       >
-        We&apos;re sorry, but there are no products matching on{" "}
+        Lamentamos, mas não há produtos correspondentes em{" "}
         <span className="text-darkColor text-base font-semibold">
           {selectedTab}
         </span>{" "}
-        criteria at the moment.
+        neste momento.
       </motion.p>
 
       <motion.div
@@ -47,7 +47,7 @@ const NoProductAvailable = ({
         className="text-shop_dark_green flex items-center space-x-2"
       >
         <Loader2 className="h-5 w-5 animate-spin" />
-        <span>We&apos;re restocking shortly</span>
+        <span>A repor stock brevemente</span>
       </motion.div>
 
       <motion.p
@@ -56,7 +56,7 @@ const NoProductAvailable = ({
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-sm text-gray-500"
       >
-        Please check back later or explore our other product categories.
+        Por favor, volte mais tarde ou explore outras categorias de produtos.
       </motion.p>
     </div>
   );
