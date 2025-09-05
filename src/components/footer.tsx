@@ -59,7 +59,7 @@ const Footer = () => {
             </SubText>
             <form className="space-y-3">
               <Input
-                placeholder="Enter your email"
+                placeholder="Prencher o seu email"
                 className="mt-4"
                 type="email"
                 required
