@@ -13,6 +13,7 @@ const HomeTabBar = async () =>
   {
     const tabCategorias = await prisma.category.findMany({
       take: 4,
+      orderBy: { id: "desc" },
       skip: 0,
       select: { id: true, title: true, slug: true },
     });

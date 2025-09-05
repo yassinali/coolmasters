@@ -4,6 +4,7 @@ import Link from "next/link";
 export const FooterCategorias = async () => {
   const categoriesData = await prisma.category.findMany({
     take: 6,
+    orderBy: { id: "desc" },
     skip: 0,
     select: { title: true, slug: true },
   });
