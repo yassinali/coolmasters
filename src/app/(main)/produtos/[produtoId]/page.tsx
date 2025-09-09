@@ -4,13 +4,14 @@ import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import { unauthorized } from "next/navigation";
 import { ProdutoDadosForm } from "../_components/produtoDados";
+import { ProdutoImagensForm } from "../_components/produtoImagensForm";
 
 export const metadata: Metadata = {
   title: "Edicao das marcas",
 };
 
 interface PageProps {
-  params: Promise<{ marcaId: string }>;
+  params: Promise<{ produtoId: string }>;
 }
 
 const HomePage = async ({ params }: PageProps) => {
@@ -23,10 +24,13 @@ const HomePage = async ({ params }: PageProps) => {
 
   const produtoDados = await prisma.product.findFirst({
     where: {
-      id: id.marcaId,
+      id: id.produtoId,
+    },
+    include: {
+      images: true, // Inclui o array de imagens
     },
   });
-  console.log(produtoDados);
+
   if (!produtoDados) {
     unauthorized();
   }
@@ -36,6 +40,8 @@ const HomePage = async ({ params }: PageProps) => {
     slug: produtoDados?.slug || "",
     description: produtoDados?.description || "",
     brandId: produtoDados?.brandId,
+    status: produtoDados?.status,
+    images: produtoDados?.images || [], // Passa o array de imagens completo
   };
 
   return (
@@ -46,10 +52,15 @@ const HomePage = async ({ params }: PageProps) => {
             <div>
               <ProdutoDadosForm
                 dadosIniciais={dadosIniciais}
-                produtoId={(await params).marcaId}
+                produtoId={(await params).produtoId}
               />
             </div>
-            <div></div>
+            <div>
+              <ProdutoImagensForm
+                produtoId={(await params).produtoId}
+                dadosIniciais={dadosIniciais}
+              />
+            </div>
           </div>
         </div>
       </div>

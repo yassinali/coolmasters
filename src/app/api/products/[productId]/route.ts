@@ -33,7 +33,9 @@ export async function PATCH(
       );
     }
 
-    const { name, description, brandId, categories } = body;
+    const { name, description, brandId, categories, status } = body;
+
+    console.log(body);
 
     // Busca o funcionário pelo ID
     const product = await prisma.product.findUnique({
@@ -55,6 +57,7 @@ export async function PATCH(
         description,
         brandId,
         categories,
+        status,
       },
     });
 

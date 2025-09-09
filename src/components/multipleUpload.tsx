@@ -5,20 +5,16 @@ import { useState, useEffect } from "react";
 import type { ourFileRouter } from "@/app/api/uploadthing/core";
 import { UploadDropzone } from "@/lib/uploadthing";
 
-interface FileUploadProps {
-  onChange: (url?: string, name?: string) => void;
+interface MultiFileUploadProps {
+  onChange: (urls: string[]) => void;
   endpoint: keyof typeof ourFileRouter;
+  maxFiles?: number;
 }
 
-interface UploadedFile {
-  ufsUrl?: string;
-  fileUrl?: string;
-  name?: string;
-  fileName?: string;
-  key?: string;
-}
-
-export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
+export const MultiFileUpload = ({
+  onChange,
+  endpoint,
+}: MultiFileUploadProps) => {
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
 
@@ -33,18 +29,18 @@ export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
     <div>
       <UploadDropzone
         endpoint={endpoint}
-        // Usamos a propriedade "appearance" para estilizar o componente
-        // O texto e os elementos do "UploadDropzone" serão estilizados aqui
+        // A propriedade 'maxFileCount' foi removida, pois não é válida aqui.
+        // O limite de arquivos é gerenciado pela lógica do componente pai.
+        config={
+          {
+            // Outras configurações (como 'mode' ou 'appendOnPaste') podem ir aqui.
+          }
+        }
         appearance={{
-          // Define a cor do texto do contêiner principal para preto
           container: "text-black",
-          // Define a cor do ícone de upload para preto
           uploadIcon: { color: "black" },
-          // A propriedade 'label' pode aceitar um objeto de estilo
           label: { color: "black" },
-          // A propriedade 'allowedContent' pode aceitar um objeto de estilo
           allowedContent: { color: "black" },
-          // A propriedade 'button' pode aceitar um objeto de estilo
           button: { color: "black" },
         }}
         onUploadBegin={() => {
@@ -59,18 +55,19 @@ export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
               return;
             }
 
-            const f = res[0] as UploadedFile;
-            const fileUrl = f.ufsUrl || f.fileUrl || "";
-            const fileName =
-              f.name || f.fileName || f.key || "arquivo_sem_nome";
+            const urls = res.map((file) => file.url).filter(Boolean);
 
-            if (!fileUrl) {
-              toast.error("Upload concluído, mas URL não encontrada");
+            if (urls.length === 0) {
+              toast.error(
+                "Upload concluído, mas nenhuma URL válida encontrada",
+              );
               return;
             }
 
-            onChange(fileUrl, fileName);
-            toast.success(`${fileName} carregado com sucesso!`);
+            onChange(urls);
+            toast.success(
+              `${urls.length} arquivo(s) carregado(s) com sucesso!`,
+            );
             setUploadProgress(100);
           } catch {
             toast.error("Erro ao processar o upload");

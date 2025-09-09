@@ -2,13 +2,12 @@ import { getServerSession } from "@/lib/get-session";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
-
 const f = createUploadthing();
 
 const handleAuth = async () => {
-    const session = await getServerSession();
-    const user = session?.user;
-  
+  const session = await getServerSession();
+  const user = session?.user;
+
   if (!user) throw new UploadThingError("Unauthorized");
 
   return { userId: user.id };
@@ -16,7 +15,7 @@ const handleAuth = async () => {
 
 export const ourFileRouter = {
   imageUrl: f({
-    image: { maxFileSize: "2MB", maxFileCount: 1 },
+    image: { maxFileSize: "2MB", maxFileCount: 6 }, // Alterado para permitir 6 arquivos
   })
     .middleware(() => handleAuth())
     .onUploadComplete(async ({ metadata, file }) => {

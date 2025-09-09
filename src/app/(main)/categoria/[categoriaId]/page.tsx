@@ -4,6 +4,7 @@ import prisma from "@/lib/prisma";
 import { Metadata } from "next";
 import { unauthorized } from "next/navigation";
 import { CategoriaDadosForm } from "../_component/categoriaDadosForm";
+import { CategoriaImagem } from "../_component/categoriaImagem";
 
 export const metadata: Metadata = {
   title: "Edicao de categrias",
@@ -26,17 +27,17 @@ const CategoriaIdPage = async ({ params }: PageProps) => {
       id: id.categoriaId,
     },
   });
-  console.log(categoriaDados)
+  console.log(categoriaDados);
   if (!categoriaDados) {
     unauthorized();
   }
 
   const dadosIniciais = {
     title: categoriaDados?.title || "",
-    slug: categoriaDados?.slug ||"",
+    slug: categoriaDados?.slug || "",
     description: categoriaDados?.description || "",
-    imageUrl: categoriaDados?.imageUrl || ""
-  }
+    imageUrl: categoriaDados?.imageUrl || "",
+  };
 
   return (
     <Container>
@@ -44,7 +45,14 @@ const CategoriaIdPage = async ({ params }: PageProps) => {
         <div className="flex items-center justify-between">
           <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div>
-              <CategoriaDadosForm dadosIniciais={dadosIniciais} categoriaId={(await params).categoriaId} />
+              <CategoriaDadosForm
+                dadosIniciais={dadosIniciais}
+                categoriaId={(await params).categoriaId}
+              />
+              <CategoriaImagem
+                dadosIniciais={dadosIniciais}
+                categoriaId={(await params).categoriaId}
+              />
             </div>
           </div>
         </div>
