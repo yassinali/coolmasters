@@ -54,9 +54,9 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
     const { error } = await authClient.updateUser({ name, image });
 
     if (error) {
-      setError(error.message || "Failed to update profile");
+      setError(error.message || "Falha ao actualizar o perfil");
     } else {
-      setStatus("Profile updated");
+      setStatus("Perfil actualizado com sucesso");
       router.refresh();
     }
   }
@@ -80,7 +80,7 @@ export function ProfileDetailsForm({ user }: ProfileDetailsFormProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Profile Details</CardTitle>
+        <CardTitle>Detalhes de Perfil</CardTitle>
       </CardHeader>
       <CardContent>
         <Form {...form}>

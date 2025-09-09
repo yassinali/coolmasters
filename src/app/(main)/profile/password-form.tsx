@@ -19,9 +19,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const updatePasswordSchema = z.object({
-  currentPassword: z
-    .string()
-    .min(1, { message: "Current password is required" }),
+  currentPassword: z.string().min(1, { message: "Senha actual é obrigatória" }),
   newPassword: passwordSchema,
 });
 
@@ -78,7 +76,7 @@ export function PasswordForm() {
                 <FormItem>
                   <FormLabel>Senha actual</FormLabel>
                   <FormControl>
-                    <PasswordInput {...field} placeholder="Current password" />
+                    <PasswordInput {...field} placeholder="Senha actual" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

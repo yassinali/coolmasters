@@ -37,7 +37,7 @@ const CategoryList = ({
             />
             <Label
               htmlFor={category?.slug}
-              className={`${selectedCategory === category?.slug ? "text-shop_dark_green font-semibold" : "font-normal"}`}
+              className={`${selectedCategory === category?.slug ? "text-shop_dark_green font-semibold" : "font-normal"} cursor-pointer`}
             >
               {category.title}
             </Label>

@@ -34,7 +34,7 @@ const BrandList = ({ brands, selectedBrand, setSelectedBrand }: Props) => {
             />
             <Label
               htmlFor={brand?.slug}
-              className={`${selectedBrand === brand?.slug ? "text-shop_dark_green font-semibold" : "font-normal"}`}
+              className={`${selectedBrand === brand?.slug ? "text-shop_dark_green font-semibold" : "font-normal"} cursor-pointer`}
             >
               {brand?.title}
             </Label>

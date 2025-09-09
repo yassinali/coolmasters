@@ -34,11 +34,7 @@ const NoProductAvailable = ({
         transition={{ delay: 0.2, duration: 0.5 }}
         className="text-gray-600"
       >
-        Lamentamos, mas não há produtos correspondentes em{" "}
-        <span className="text-darkColor text-base font-semibold">
-          {selectedTab}
-        </span>{" "}
-        neste momento.
+        Lamentamos, mas não há produtos correspondentes neste momento.
       </motion.p>
 
       <motion.div

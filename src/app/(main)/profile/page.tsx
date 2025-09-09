@@ -6,7 +6,7 @@ import { PasswordForm } from "./password-form";
 import { ProfileDetailsForm } from "./profile-details-form";
 
 export const metadata: Metadata = {
-  title: "Profile",
+  title: "Perfil",
 };
 
 export default async function ProfilePage() {
@@ -29,7 +29,6 @@ export default async function ProfilePage() {
             <ProfileDetailsForm user={user} />
           </div>
           <div className="flex-1 space-y-6">
-         
             <PasswordForm />
             <LogoutEverywhereButton />
           </div>

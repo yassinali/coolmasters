@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -153,14 +152,11 @@ export function SignInForm() {
             )}
 
             <LoadingButton type="submit" className="w-full" loading={loading}>
-              Login
+              Entrar
             </LoadingButton>
-
-           
           </form>
         </Form>
       </CardContent>
-     
     </Card>
   );
 }

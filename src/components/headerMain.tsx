@@ -22,7 +22,13 @@ const Header = async () => {
         <div className="flex w-auto items-center justify-end gap-5 md:w-1/3">
           <Searchbar />
           <CartIcon />
-          {user ? <p>{user.name}</p> : <Link href="/sign-in">Entrar</Link>}
+          {user ? (
+            <p>
+              <Link href={`/dashboard`}>{user.name}</Link>
+            </p>
+          ) : (
+            <Link href="/sign-in">Entrar</Link>
+          )}
         </div>
       </Container>
     </header>
