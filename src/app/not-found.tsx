@@ -10,11 +10,10 @@ const NotFoundPage = () => {
           <Logo />
 
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-            À procura de algo?
+            Página não encontrada
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Lamentamos. O endereço da Web que inseriu não corresponde a uma
-            página válida no nosso site.
+            Lamentamos, mas a página que procura não existe ou foi removida.
           </p>
         </div>
         <div className="mt-8 space-y-6">
@@ -23,32 +22,20 @@ const NotFoundPage = () => {
               href="/"
               className="bg-shop_dark_green/80 hover:bg-shop_dark_green focus:ring-amazonOrangeDark hoverEffect flex w-full items-center justify-center rounded-md border border-transparent px-4 py-2 text-sm font-semibold text-white focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
-              Ir para a página inicial do Shopcart
+              Voltar à página inicial
             </Link>
             <Link
               href="/help"
               className="text-amazonBlue focus:ring-amazonBlue flex w-full items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold hover:bg-gray-50 focus:ring-2 focus:ring-offset-2 focus:outline-none"
             >
-              Ajuda
+              Obter ajuda
             </Link>
           </div>
         </div>
         <div className="mt-8 text-center">
           <p className="text-sm text-gray-600">
-            Precisa de ajuda? Visite a{" "}
-            <Link
-              href="/help"
-              className="text-amazon-blue hover:text-amazon-blue-dark font-medium"
-            >
-              secção de Ajuda
-            </Link>{" "}
-            ou{" "}
-            <Link
-              href="/contacto"
-              className="text-amazon-blue hover:text-amazon-blue-dark font-medium"
-            >
-              contacte-nos
-            </Link>
+            Precisa de assistência? Visite a secção de ajuda ou contacte-nos
+            para suporte.
           </p>
         </div>
       </div>
