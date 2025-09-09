@@ -21,7 +21,7 @@ import { toast } from "sonner";
 import z from "zod";
 
 const formSchema = z.object({
-  title: z.string().min(1, { message: "Campo obrigatorio" }),
+  name: z.string().min(1, { message: "Campo obrigatorio" }),
   description: z.string().optional(),
   imageUrl: z.string().optional(),
   status: z.string().optional(),
@@ -52,7 +52,7 @@ export const ProdutoDadosForm = ({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: dadosIniciais.name || "",
+      name: dadosIniciais.name || "",
       description: dadosIniciais.description || "",
       //imageUrl: dadosIniciais.imageUrl || "",
     },
@@ -61,7 +61,7 @@ export const ProdutoDadosForm = ({
   // Atualiza os valores do formulário se os dados iniciais mudarem
   useEffect(() => {
     form.reset({
-      title: dadosIniciais.name || "",
+      name: dadosIniciais.name || "",
       description: dadosIniciais.description || "",
       // imageUrl: dadosIniciais.imageUrl || "",
     });
@@ -118,12 +118,12 @@ export const ProdutoDadosForm = ({
             {/* Nome */}
             <FormField
               control={form.control}
-              name="title"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Titulo</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nome do aluno" {...field} />
+                    <Input placeholder="Nome do produto" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
