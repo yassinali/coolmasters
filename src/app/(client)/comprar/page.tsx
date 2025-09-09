@@ -23,7 +23,7 @@ const HomePage = async () => {
   );
 
   return (
-    <div className="bg-white">
+    <div className="min-h-0 bg-white">
       <Suspense fallback={<p>Carregando...</p>}>
         <Shop categories={categories} brands={brands} />
       </Suspense>

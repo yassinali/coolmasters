@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt">
+    <html lang="en">
       <body className={`${outfit.className} antialiased`}>
         <Navbar />
         {children}

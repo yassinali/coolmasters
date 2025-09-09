@@ -15,7 +15,7 @@ export default async function AuthLayout({
   if (user) redirect("/dashboard");
 
   return (
-    <html lang="pt">
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
