@@ -2,6 +2,8 @@ import { getServerSession } from "@/lib/get-session";
 import { redirect } from "next/navigation";
 import { ReactNode } from "react";
 
+import "../globals.css";
+
 export default async function AuthLayout({
   children,
 }: {
@@ -12,5 +14,9 @@ export default async function AuthLayout({
 
   if (user) redirect("/dashboard");
 
-  return children;
+  return (
+    <html lang="pt">
+      <body>{children}</body>
+    </html>
+  );
 }
