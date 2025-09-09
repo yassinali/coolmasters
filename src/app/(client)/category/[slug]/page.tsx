@@ -9,16 +9,12 @@ const CategoryPage = async ({
   params: Promise<{ slug: string }>;
 }) => {
   const categories = await prisma.category.findMany({
-    // where: {
-    //   slug: (await params).slug,
-    // },
-
     orderBy: { id: "desc" },
   });
   const { slug } = await params;
 
   return (
-    <div className="py-10">
+    <div className="py-1">
       <Container>
         <Title>
           Produtos por categoria:{" "}

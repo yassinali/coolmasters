@@ -48,7 +48,7 @@ const CategoryProduct = ({ categories, slug }: Props) => {
   }, [currentSlug]);
 
   return (
-    <div className="flex flex-col items-start gap-5 py-5 md:flex-row">
+    <div className="flex flex-col items-start py-1 md:flex-row">
       {/* Sidebar de categorias */}
       <div className="flex flex-col border md:min-w-40">
         {categories?.map((item) => (
@@ -68,7 +68,7 @@ const CategoryProduct = ({ categories, slug }: Props) => {
       {/* Lista de produtos */}
       <div className="flex-1">
         {loading ? (
-          <div className="mt-10 flex min-h-80 w-full flex-col items-center justify-center gap-4 bg-gray-100 py-10">
+          <div className="mt-10 flex min-h-80 w-full flex-col items-center justify-center gap-4 bg-gray-100 py-4">
             <div className="flex items-center space-x-2 text-blue-600">
               <Loader2 className="size-5 animate-spin" />
               <span>Carregando produtos ...</span>
