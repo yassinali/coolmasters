@@ -77,7 +77,7 @@ const SingleProductPage = async ({ params }: PageProps) => {
 
           {/* Stock */}
           <div className="flex items-center justify-between space-y-2 border-t border-b border-gray-200 py-5">
-            <PrecoSobConsulta product={product} slug={slug} />
+            <PrecoSobConsulta product={product} />
             <p
               className={`inline-block rounded-lg px-4 py-1.5 text-center text-sm font-semibold ${
                 (product.stock ?? 0) === 0
@@ -141,7 +141,7 @@ const SingleProductPage = async ({ params }: PageProps) => {
       </Container>
 
       {/* Tabs por baixo da seção principal */}
-      <Container className="pb-10">
+      <Container className="hidden pb-10 md:block">
         <ProductTabs />
       </Container>
     </>
