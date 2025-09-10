@@ -1,6 +1,5 @@
-// app/layout.tsx
 import { Navbar } from "./navbar";
-import "../globals.css"; // caso use CSS global
+import "../globals.css";
 import { Outfit } from "next/font/google";
 import { Metadata } from "next";
 

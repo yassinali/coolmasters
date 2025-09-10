@@ -38,7 +38,7 @@ const formSchema = z.object({
     .array(z.string())
     .min(1, { message: "Selecione pelo menos uma categoria" }),
   // O brandId agora é opcional, conforme o seu modelo
-  brandId: z.string().optional(),
+  brandId: z.string().min(1, { message: "Selecione uma marca" }),
 });
 
 // Interface para o modelo de Categoria
@@ -137,10 +137,10 @@ export const NovoProduto = () => {
     <Container>
       <div className="w-full rounded-md bg-white p-6 shadow-md md:p-8">
         <h1 className="mb-4 text-center text-3xl font-bold text-gray-800">
-          Registro de Produtos
+          Registo de Produtos
         </h1>
         <p className="text-md mb-6 text-center text-gray-600">
-          Preencha todos os dados para registrar o produto
+          Preencha todos os dados para registar o produto
         </p>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -230,11 +230,6 @@ export const NovoProduto = () => {
             />
 
             <div className="mt-6 flex items-center justify-between">
-              <Link href="/produtos">
-                <Button type="button" variant="ghost">
-                  Cancelar
-                </Button>
-              </Link>
               <Button type="submit" disabled={isSubmitting || !isValid}>
                 {isSubmitting ? "Aguarde..." : "Gravar"}
               </Button>

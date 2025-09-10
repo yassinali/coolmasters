@@ -67,10 +67,10 @@ export const ListaDeProdutos = () => {
     <div className="pl-6">
       <div className="mt-6 flex w-full items-center justify-between">
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-medium">Marcas oficiais</h1>
+          <h1 className="text-2xl font-medium">Nossos produtos</h1>
         </div>
         <div className="mr-10 flex flex-col gap-x-2">
-          <Link href={"/marcas/nova"}>
+          <Link href={"/produtos/novo"}>
             <Button variant={"ghost"} size={"sm"}>
               <PlusCircle className="size-4" />
               <p className="text-2xl font-medium">Novo</p>

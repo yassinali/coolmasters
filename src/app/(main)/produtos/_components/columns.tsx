@@ -1,13 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
-import { ArrowUpDown, EyeIcon, MoreHorizontal } from "lucide-react";
+import { ArrowUpDown, Pencil } from "lucide-react";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Product } from "@/generated/prisma";
 
@@ -66,25 +60,20 @@ export const columns: ColumnDef<Product>[] = [
   },
   {
     id: "actions",
+    header: "Acções", // Título da coluna
     cell: ({ row }) => {
       const { id } = row.original;
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <MoreHorizontal className="h-4 w-4" />
-              <span className="sr-only">Open Menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <Link href={`/produtos/${id}`} passHref>
-              <DropdownMenuItem className="cursor-pointer">
-                <EyeIcon className="mr-2 h-4 w-4" /> Ver
-              </DropdownMenuItem>
-            </Link>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center gap-2">
+          <Link
+            href={`/produtos/${id}`}
+            className="hover:text-shop_light_green flex items-center gap-1 hover:underline"
+          >
+            <Pencil className="h-4 w-4" />
+            Editar
+          </Link>
+        </div>
       );
     },
   },

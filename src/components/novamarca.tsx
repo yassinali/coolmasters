@@ -1,11 +1,18 @@
-"use client"
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "./ui/form";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Loader2 } from "lucide-react";
@@ -54,49 +61,61 @@ export const NovaMarcaCreateForm = () => {
 
   return (
     <div>
-        <div>
-            <h1>Criar marca</h1>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <FormField
-                    control={form.control}
-                    name="title"
-                    render={({field})=>(
-                        <FormItem>
-                            <FormLabel>Titulo</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Escrever o titulo" {...field}/>
-                            </FormControl>
-                            <FormMessage/>
-                        </FormItem>
-                    )}
+      <div className="p-4">
+        <h1 className="text-xl">Criar marca</h1>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="py-3">Titulo</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Escrever o titulo"
+                      {...field}
+                      className="space-y-2"
                     />
-                      <FormField
-                    control={form.control}
-                    name="description"
-                    render={({field})=>(
-                        <FormItem>
-                            <FormLabel>Descricao</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Escrever o titulo" {...field}/>
-                            </FormControl>
-                            <FormMessage/>
-                        </FormItem>
-                    )}
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="py-3">Descricao</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Escrever o titulo"
+                      {...field}
+                      className="space-y-2"
                     />
-                    <Button type="submit" disabled={isSubmitting || !isValid}>
-                      {isSubmitting ? (
-                        <>
-                        <Loader2 className="animate-spin h-4 w-4"/>
-                        <p className="text-muted-foreground">Gravando...</p>
-                        </>
-                      ):(
-                        "Gravar"
-                      )}
-                      </Button>
-                </form>
-            </Form>
-        </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              disabled={isSubmitting || !isValid}
+              className="mt-4"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <p className="text-muted-foreground">Gravando...</p>
+                </>
+              ) : (
+                "Gravar"
+              )}
+            </Button>
+          </form>
+        </Form>
+      </div>
     </div>
-  )
+  );
 };

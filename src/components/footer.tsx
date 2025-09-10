@@ -64,7 +64,7 @@ const Footer = () => {
                 type="email"
                 required
               />
-              <Button className="w-full">Subscrever</Button>
+              <Button className="bg-shop_light_green w-full">Subscrever</Button>
             </form>
           </div>
         </div>

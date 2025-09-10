@@ -60,7 +60,7 @@ export const NovaCategoriaCreateForm = () => {
   return (
     <div>
       <div>
-        <h1>Criar categoria</h1>
+        <h1 className="text-xl">Criar categoria</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <FormField
@@ -68,7 +68,7 @@ export const NovaCategoriaCreateForm = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Titulo</FormLabel>
+                  <FormLabel className="py-3">Titulo</FormLabel>
                   <FormControl>
                     <Input placeholder="Escrever o titulo" {...field} />
                   </FormControl>
@@ -81,7 +81,7 @@ export const NovaCategoriaCreateForm = () => {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Descricao</FormLabel>
+                  <FormLabel className="py-3">Descricao</FormLabel>
                   <FormControl>
                     <Input placeholder="Escrever o titulo" {...field} />
                   </FormControl>
@@ -89,7 +89,11 @@ export const NovaCategoriaCreateForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={isSubmitting || !isValid}>
+            <Button
+              type="submit"
+              disabled={isSubmitting || !isValid}
+              className="mt-4"
+            >
               {isSubmitting ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
