@@ -24,6 +24,7 @@ export async function GET(request: Request) {
       },
       include: {
         images: true,
+        brand: true,
       },
     });
 

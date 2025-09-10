@@ -1,16 +1,11 @@
-import { Title } from "@/components/text";
-import { Product as PrismaProduct, Images } from "@/generated/prisma";
+import { ProductWithRelations } from "@/app/hook/types";
+import { SubTitle, Title } from "@/components/text";
 import { Flame, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// Defina um novo tipo que estende o tipo `Product` do Prisma e inclui o campo `images`
-type ProductWithImages = PrismaProduct & {
-  images: Images[];
-};
-
-const ProductCard = ({ product }: { product: ProductWithImages }) => {
+const ProductCard = ({ product }: { product: ProductWithRelations }) => {
   const hasImage = product?.images && product.images.length > 0;
   const stock = product?.stock ?? 0;
 
@@ -44,7 +39,7 @@ const ProductCard = ({ product }: { product: ProductWithImages }) => {
 
         {product?.status === "hot" && (
           <Link
-            href={"/deal"}
+            href={"/novidades"}
             className="border-b-shop_orange/50 group-hover:border-shop_orange group-hover:text-shop_orange hoverEffect absolute top-2 left-2 z-10 rounded-full border p-1"
           >
             <Flame
@@ -57,6 +52,9 @@ const ProductCard = ({ product }: { product: ProductWithImages }) => {
       </div>
 
       <div className="flex flex-col gap-2 p-3">
+        <SubTitle className="text-muted-foreground text-xs uppercase">
+          {product.brand ? product.brand.title : "Sem Marca"}
+        </SubTitle>
         <Title className="line-clamp-2 text-sm">{product.name}</Title>
 
         <div className="flex items-center justify-between gap-2">

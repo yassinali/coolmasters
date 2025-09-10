@@ -5,21 +5,16 @@ import { Loader2 } from "lucide-react";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./productCard";
 import HomeTabBar from "@/components/homeTabBar";
-import { Product as PrismaProduct, Images, Category } from "@/generated/prisma";
-
-// Define a tipagem correta para o produto, incluindo a relação com Images
-type ProductWithImages = PrismaProduct & {
-  images: Images[];
-};
+import { Category } from "@/generated/prisma";
+import { ProductWithRelations } from "@/app/hook/types";
 
 const ProductGrid = () => {
-  const [products, setProducts] = useState<ProductWithImages[]>([]);
+  const [products, setProducts] = useState<ProductWithRelations[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loadingProducts, setLoadingProducts] = useState(false);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
-  // Efeito para carregar as categorias na montagem do componente
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -38,7 +33,6 @@ const ProductGrid = () => {
     fetchCategories();
   }, []);
 
-  // Efeito para carregar os produtos sempre que a categoria selecionada mudar
   useEffect(() => {
     if (!selectedCategoryId) return;
 
@@ -51,7 +45,7 @@ const ProductGrid = () => {
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
         }
-        const data: ProductWithImages[] = await response.json();
+        const data: ProductWithRelations[] = await response.json();
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);
