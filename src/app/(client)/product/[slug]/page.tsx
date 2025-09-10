@@ -11,6 +11,7 @@ import ImageView from "../../_components/imageView";
 import ProductCharacteristics from "../../_components/productCharacteristics";
 import { ProductTabs } from "../../_components/productTabs";
 import ShareButton from "../../_components/ShareButton";
+import { PrecoSobConsulta } from "../../_components/precoSobConsulta";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -75,7 +76,8 @@ const SingleProductPage = async ({ params }: PageProps) => {
           </div>
 
           {/* Stock */}
-          <div className="space-y-2 border-t border-b border-gray-200 py-5">
+          <div className="flex items-center justify-between space-y-2 border-t border-b border-gray-200 py-5">
+            <PrecoSobConsulta product={product} slug={slug} />
             <p
               className={`inline-block rounded-lg px-4 py-1.5 text-center text-sm font-semibold ${
                 (product.stock ?? 0) === 0
