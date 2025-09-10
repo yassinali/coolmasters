@@ -1,5 +1,6 @@
 "use client";
 
+import { AutoResizeTextarea } from "@/app/hook/AutoResizeTextarea";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { RadioGroup } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { Loader2, Pencil } from "lucide-react";
@@ -54,7 +56,7 @@ export const ProdutoDadosForm = ({
     defaultValues: {
       name: dadosIniciais.name || "",
       description: dadosIniciais.description || "",
-      //imageUrl: dadosIniciais.imageUrl || "",
+      status: dadosIniciais.status || undefined,
     },
   });
 
@@ -63,7 +65,7 @@ export const ProdutoDadosForm = ({
     form.reset({
       name: dadosIniciais.name || "",
       description: dadosIniciais.description || "",
-      // imageUrl: dadosIniciais.imageUrl || "",
+      status: dadosIniciais.status || undefined,
     });
   }, [dadosIniciais, form]);
 
@@ -89,7 +91,7 @@ export const ProdutoDadosForm = ({
   return (
     <div className="mt-2 rounded-md border bg-slate-100 p-4">
       <div className="flex items-center justify-between font-medium">
-        Dados da marca
+        Dados do produto
         <Button onClick={toggleEdit} variant={"ghost"}>
           {isEditing ? (
             "Cancelar"
@@ -104,7 +106,19 @@ export const ProdutoDadosForm = ({
 
       {!isEditing ? (
         <>
-          <p className="mt-2 text-sm">Titulo: {dadosIniciais.name || "-"}</p>
+          <p className="mt-2 text-sm">{dadosIniciais.name || "-"}</p>
+          <p className="mt-2 text-sm">
+            <span
+              className={`inline-block rounded-full px-2 py-1 text-xs font-medium ${dadosIniciais.status === "new" ? "bg-blue-100 text-blue-800" : ""} ${dadosIniciais.status === "sale" ? "bg-green-100 text-green-800" : ""} ${!dadosIniciais.status ? "bg-gray-100 text-gray-800" : ""} `}
+            >
+              {dadosIniciais.status === "new"
+                ? "Novidades"
+                : dadosIniciais.status === "sale"
+                  ? "Vendidos"
+                  : "-"}
+            </span>
+          </p>
+
           <p className="mt-2 text-sm">
             Descrição: {dadosIniciais.description || "-"}
           </p>
@@ -137,7 +151,10 @@ export const ProdutoDadosForm = ({
                 <FormItem>
                   <FormLabel>Descrição</FormLabel>
                   <FormControl>
-                    <Input placeholder="Descrição" {...field} />
+                    <AutoResizeTextarea
+                      value={field.value}
+                      onChange={field.onChange}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -156,8 +173,8 @@ export const ProdutoDadosForm = ({
                         <div className="flex items-center space-x-2">
                           <input
                             type="radio"
-                            value="active"
-                            checked={field.value === "new"}
+                            value="new"
+                            checked={field.value === "new"} // seleciona se status for "new"
                             onChange={() => field.onChange("new")}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
                           />
@@ -168,8 +185,8 @@ export const ProdutoDadosForm = ({
                         <div className="flex items-center space-x-2">
                           <input
                             type="radio"
-                            value="inactive"
-                            checked={field.value === "hot"}
+                            value="hot"
+                            checked={field.value === "hot"} // seleciona se status for "hot"
                             onChange={() => field.onChange("hot")}
                             className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
                           />

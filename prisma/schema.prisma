@@ -103,6 +103,7 @@ model Product {
   categories  Category[]    @relation("ProductCategories")
   images      Images[]
   variant   String?
+  contador   Int?      @default(0)
 }
 
 
@@ -124,6 +125,7 @@ model Category {
   featured    Boolean    @default(false)
   imageUrl    String?    // opcional: só se quiser mostrar banner/ícone
   products    Product[]  @relation("ProductCategories")
+  contador    Int?       @default(0) // contador de produtos na categoria
 }
 
 model Images{

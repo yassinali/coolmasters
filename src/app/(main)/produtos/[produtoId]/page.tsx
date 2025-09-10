@@ -46,22 +46,18 @@ const HomePage = async ({ params }: PageProps) => {
 
   return (
     <Container>
-      <div className="mt-6 pl-6">
-        <div className="flex items-center justify-between">
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div>
-              <ProdutoDadosForm
-                dadosIniciais={dadosIniciais}
-                produtoId={(await params).produtoId}
-              />
-            </div>
-            <div>
-              <ProdutoImagensForm
-                produtoId={(await params).produtoId}
-                dadosIniciais={dadosIniciais}
-              />
-            </div>
-          </div>
+      <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="flex w-full flex-col">
+          <ProdutoDadosForm
+            dadosIniciais={dadosIniciais}
+            produtoId={id.produtoId}
+          />
+        </div>
+        <div className="flex w-full flex-col">
+          <ProdutoImagensForm
+            produtoId={id.produtoId}
+            dadosIniciais={dadosIniciais}
+          />
         </div>
       </div>
     </Container>
