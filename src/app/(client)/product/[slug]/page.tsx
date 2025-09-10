@@ -24,6 +24,7 @@ const SingleProductPage = async ({ params }: PageProps) => {
     include: {
       images: true,
       categories: true,
+      brand: true,
     },
   });
 
