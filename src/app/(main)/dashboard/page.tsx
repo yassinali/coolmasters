@@ -11,7 +11,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { User } from "@/lib/auth";
 import { getServerSession } from "@/lib/get-session";
 import { format } from "date-fns";
-import {  MailIcon, ShieldIcon, UserIcon } from "lucide-react";
+import { MailIcon, ShieldIcon, UserIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { unauthorized } from "next/navigation";
@@ -31,9 +31,7 @@ export default async function DashboardPage() {
       <div className="space-y-6">
         <div className="space-y-2">
           <h1 className="text-2xl font-semibold">Dashboard</h1>
-          <p className="text-muted-foreground">
-            Bem vindo a Coomasters.
-          </p>
+          <p className="text-muted-foreground">Bem vindo a Coomasters.</p>
         </div>
         {!user.emailVerified && <EmailVerificationAlert />}
         <ProfileInformation user={user} />
@@ -54,9 +52,7 @@ function ProfileInformation({ user }: ProfileInformationProps) {
           <UserIcon className="size-5" />
           Informações do perfil
         </CardTitle>
-        <CardDescription>
-          Detalhes da sua conta
-        </CardDescription>
+        <CardDescription>Detalhes da sua conta</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
@@ -81,7 +77,6 @@ function ProfileInformation({ user }: ProfileInformationProps) {
             </div>
 
             <div className="space-y-2">
-              
               <p className="text-muted-foreground text-xs italic">
                 {format(user.createdAt, "d MMMM yyyy")}
               </p>
@@ -104,7 +99,7 @@ function EmailVerificationAlert() {
           </span>
         </div>
         <Button size="sm" asChild>
-          <Link href="/verify-email">Verify Email</Link>
+          <Link href="/verify-email">Verificar Email</Link>
         </Button>
       </div>
     </div>
