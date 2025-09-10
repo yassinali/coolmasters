@@ -1,10 +1,9 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion"; // Use framer-motion, já que a sintaxe é mais comum
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
 
-// Interface para o modelo Images do Prisma
 interface ImageModel {
   id: string;
   imagesUrl: string;
@@ -14,21 +13,19 @@ interface ImageModel {
 
 interface Props {
   images?: ImageModel[];
-  isStock?: number | null; // Tipagem ajustada
+  isStock?: number | null;
 }
 
 const ImageView = ({ images = [], isStock }: Props) => {
-  // Encontra a primeira imagem ou a imagem padrão se existir
   const [active, setActive] = useState(
     images.find((img) => img.default) || images[0],
   );
 
-  if (!active) {
-    return null; // Não renderiza nada se não houver imagens
-  }
+  if (!active) return null;
 
   return (
     <div className="w-full space-y-2 md:w-1/2 md:space-y-4">
+      {/* Imagem principal */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active.id}
@@ -39,7 +36,7 @@ const ImageView = ({ images = [], isStock }: Props) => {
           className="group border-darkColor/10 max-h-[550px] min-h-[450px] w-full overflow-hidden rounded-md border"
         >
           <Image
-            src={active.imagesUrl} // Usa diretamente a URL da imagem
+            src={active.imagesUrl}
             alt="productImage"
             width={700}
             height={700}
@@ -50,19 +47,22 @@ const ImageView = ({ images = [], isStock }: Props) => {
           />
         </motion.div>
       </AnimatePresence>
+
+      {/* Miniaturas */}
       <div className="grid h-20 grid-cols-6 gap-2 md:h-24">
         {images?.map((image) => (
           <button
             key={image.id}
-            onClick={() => setActive(image)}
-            className={`overflow-hidden rounded-md border ${
+            onClick={() => setActive(image)} // clique mantém a lógica
+            onMouseEnter={() => setActive(image)} // hover também troca
+            className={`overflow-hidden rounded-md border transition ${
               active.id === image.id
                 ? "border-darkColor opacity-100"
-                : "opacity-80"
+                : "opacity-80 hover:opacity-100"
             }`}
           >
             <Image
-              src={image.imagesUrl} // Usa diretamente a URL da imagem
+              src={image.imagesUrl}
               alt={`Thumbnail ${image.id}`}
               width={100}
               height={100}

@@ -102,6 +102,7 @@ model Product {
   brand       Brand?        @relation(fields: [brandId], references: [id])
   categories  Category[]    @relation("ProductCategories")
   images      Images[]
+  variant   String?
 }
 
 

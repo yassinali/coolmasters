@@ -1,12 +1,12 @@
 export const headerData = [
-  { title: "Home", href: "/" },
+  { title: "Inicio", href: "/" },
   { title: "Comprar", href: "/comprar" },
   { title: "Novidades", href: "/novidades" },
   { title: "Contacto", href: "/contacto" },
 ];
 export const quickLinksData = [
-  { title: "Acerca de Nos", href: "/acerca#" },
-  { title: "Contact us", href: "/contacto" },
-  { title: "Terms & Conditions", href: "/terms#" },
-  { title: "Privacy Policy", href: "/privacy#" },
+  { title: "Sobre nós", href: "/acerca#" },
+  { title: "Contacte-nos", href: "/contacto" },
+  { title: "Termos e Condições", href: "/terms#" },
+  { title: "Política de Privacidade", href: "/privacy#" },
 ];

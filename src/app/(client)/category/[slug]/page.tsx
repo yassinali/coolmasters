@@ -18,7 +18,7 @@ const CategoryPage = async ({
       <Container>
         <Title>
           Produtos por categoria:{" "}
-          <span className="font-bold tracking-wide text-green-600 capitalize">
+          <span className="text-shop_light_green font-bold tracking-wide capitalize">
             {slug && slug}
           </span>
         </Title>

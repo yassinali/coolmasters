@@ -23,16 +23,16 @@ export default function BannerCarousel() {
         "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhmlaZEJNjO7qBVA3xSMXdLgwUNR21nmKPjluJcp",
     },
     {
-      title: "Promoções imperdíveis em electrodomésticos <br /> e portáteis",
-      button: { text: "Ver ofertas", href: "/comprar" },
+      title: "Promoções imperdíveis na categoria de casas inteligentes",
+      button: { text: "Ver ofertas", href: "/category/casa-inteligentes" },
       image:
-        "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhml4L7iDKPL9eqGlf8zRTCNpVK0ncHYU6FvtEwD",
+        "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhmlTVOVakXg2sNRKHCwMfoulXPrnexcqzAU9OBS",
     },
     {
       title: "Os melhores electrodomésticos <br /> com entrega rápida",
-      button: { text: "Explorar agora", href: "/comprar" },
+      button: { text: "Explorar agora", href: "/category/eletrodomesticos" },
       image:
-        "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhml7tyWCrTZYM58omvRIVXDurgAKCe3BlPL6GtQ",
+        "https://kisrj7912y.ufs.sh/f/E1L3Kf9gGhmldlMOulGxY8X5O2kLrhspAqZQuPJDRfcoIUlv",
     },
   ];
 
@@ -73,7 +73,7 @@ export default function BannerCarousel() {
                 </Title>
                 <Link
                   href={slide.button.href}
-                  className="bg-shop_dark_green/90 hover:bg-shop_dark_green hoverEffect rounded-md px-5 py-2 text-sm font-semibold text-white/90 hover:text-white"
+                  className="bg-darkColor hover:bg-shop_light_green hoverEffect rounded-md px-5 py-2 text-sm font-semibold text-white/90 hover:text-white"
                 >
                   {slide.button.text}
                 </Link>

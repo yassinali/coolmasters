@@ -55,9 +55,9 @@ const CategoryProduct = ({ categories, slug }: Props) => {
           <Button
             onClick={() => handleCategoryChange(item.slug)}
             key={item.id}
-            className={`text-darkColor hover:bg-shop_orange hoverEffect rounded-none border-0 border-b bg-transparent p-0 font-semibold capitalize shadow-none transition-colors last:border-b-0 hover:text-white ${
+            className={`text-darkColor hover:bg-shop_light_green hoverEffect rounded-none border-0 border-b bg-transparent p-0 font-semibold capitalize shadow-none transition-colors last:border-b-0 hover:text-white ${
               item.slug === currentSlug &&
-              "bg-shop_orange border-shop_orange text-white"
+              "bg-shop_light_green border-shop_light_green text-white"
             }`}
           >
             <p className="w-full px-2 text-left">{item.title}</p>
