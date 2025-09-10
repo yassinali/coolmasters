@@ -1,13 +1,6 @@
 // Componente separado para textarea auto-expand
 import { Textarea } from "@/components/ui/textarea";
-import {
-  FormControl,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import React, { useEffect, useRef } from "react";
-import { Control, Controller } from "react-hook-form";
 
 interface AutoResizeTextareaProps {
   value?: string;

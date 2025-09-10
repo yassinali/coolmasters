@@ -14,6 +14,7 @@ import ProductCard from "./productCard";
 // Cria um novo tipo que combina o tipo Product do Prisma com o array de Images
 type ProductWithImages = PrismaProduct & {
   images: Images[];
+  brand: Brand;
 };
 
 interface Category {

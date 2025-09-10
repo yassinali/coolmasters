@@ -2,8 +2,6 @@ import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/headerMain";
-import Footer from "@/components/footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",

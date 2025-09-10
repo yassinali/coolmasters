@@ -1,11 +1,12 @@
 // src/app/(client)/_components/deal-list-server.tsx
 import prisma from "@/lib/prisma";
 import ProductCard from "../_components/productCard";
-import { Product as PrismaProduct, Images } from "@/generated/prisma";
+import { Product as PrismaProduct, Images, Brand } from "@/generated/prisma";
 
 // Cria um novo tipo que combina o tipo Product do Prisma com o array de Images
 type ProductWithImages = PrismaProduct & {
   images: Images[];
+  brand: Brand | null;
 };
 
 const DealListServer = async () => {
@@ -17,6 +18,7 @@ const DealListServer = async () => {
     // You'll likely need to `include` images here to get the data
     include: {
       images: true,
+      brand: true,
     },
   });
 

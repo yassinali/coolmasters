@@ -7,10 +7,10 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import NoProductAvailable from "./NoProductAvailable";
 import ProductCard from "./productCard";
-import { Category, Product, Images } from "@/generated/prisma";
+import { Category, Product, Images, Brand } from "@/generated/prisma";
 
 // Novo tipo para produtos com imagens
-type ProductWithImages = Product & { images: Images[] };
+type ProductWithImages = Product & { images: Images[]; brand: Brand };
 
 interface Props {
   categories: Category[];
