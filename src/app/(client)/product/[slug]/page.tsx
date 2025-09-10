@@ -1,8 +1,8 @@
 import { CornerDownLeft, StarIcon, Truck } from "lucide-react";
 import { notFound } from "next/navigation";
 import React from "react";
+import Head from "next/head";
 import { FaRegQuestionCircle } from "react-icons/fa";
-import { FiShare2 } from "react-icons/fi";
 import { RxBorderSplit } from "react-icons/rx";
 import { TbTruckDelivery } from "react-icons/tb";
 import prisma from "@/lib/prisma";
@@ -10,6 +10,7 @@ import Container from "@/components/Container";
 import ImageView from "../../_components/imageView";
 import ProductCharacteristics from "../../_components/productCharacteristics";
 import { ProductTabs } from "../../_components/productTabs";
+import ShareButton from "../../_components/ShareButton";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,18 +31,34 @@ const SingleProductPage = async ({ params }: PageProps) => {
 
   return (
     <>
+      {/* Open Graph tags */}
+      <Head>
+        <title>{product.name || ""}</title>
+        <meta property="og:title" content={product.name || ""} />
+        <meta property="og:description" content={product.description ?? ""} />
+        <meta
+          property="og:image"
+          content={product.images?.[0]?.imagesUrl ?? "/default-image.png"}
+        />
+        <meta
+          property="og:url"
+          content={typeof window !== "undefined" ? window.location.href : ""}
+        />
+        <meta property="og:type" content="product" />
+      </Head>
+
       {/* Seção principal com imagem + características */}
       <Container className="flex flex-col gap-10 py-10 md:flex-row">
-        {product?.images && (
+        {product.images && (
           <ImageView images={product.images} isStock={product.stock} />
         )}
 
         <div className="flex w-full flex-col gap-5 md:w-1/2">
           {/* Nome, descrição e rating */}
           <div className="space-y-1">
-            <h2 className="text-2xl font-bold">{product?.name}</h2>
+            <h2 className="text-2xl font-bold">{product.name}</h2>
             <p className="line-clamp-9 text-sm tracking-wide text-gray-600">
-              {product?.description}
+              {product.description}
             </p>
             <div className="flex items-center gap-0.5 text-xs">
               {[...Array(5)].map((_, index) => (
@@ -60,12 +77,12 @@ const SingleProductPage = async ({ params }: PageProps) => {
           <div className="space-y-2 border-t border-b border-gray-200 py-5">
             <p
               className={`inline-block rounded-lg px-4 py-1.5 text-center text-sm font-semibold ${
-                product?.stock === 0
+                (product.stock ?? 0) === 0
                   ? "bg-red-100 text-red-600"
                   : "bg-green-100 text-green-600"
               }`}
             >
-              {(product?.stock as number) > 0 ? "In Stock" : "Out of Stock"}
+              {(product.stock ?? 0) > 0 ? "Disponível" : "Indisponível"}
             </p>
           </div>
 
@@ -87,8 +104,7 @@ const SingleProductPage = async ({ params }: PageProps) => {
               <p>Entrega e devolução</p>
             </div>
             <div className="hoverEffect flex items-center gap-2 text-xs text-black hover:text-red-600">
-              <FiShare2 className="text-lg" />
-              <p>Partilhar</p>
+              <ShareButton />
             </div>
           </div>
 
